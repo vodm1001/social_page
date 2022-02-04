@@ -1,3 +1,4 @@
+import rerenderEntireTree from "../render"
 
 let state = {
    dialogsPage: {
@@ -10,8 +11,6 @@ let state = {
       //    { writersId: 'i', id: 5, message: 'perfect' },
       // ],
 
-
-
       messages: [
          { id: 1, message: 'hi' },
          { id: 2, message: 'hello' },
@@ -19,6 +18,8 @@ let state = {
          { id: 4, message: 'i am good ty, and you?' },
          { id: 5, message: 'perfect' },
       ],
+      NewMessage: '',
+
       dialogs: [
          { id: 1, name: 'dimych', avatarUrl: 'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg' },
          { id: 2, name: 'katya', avatarUrl: 'https://cdn.icon-icons.com/icons2/2643/PNG/512/female_woman_person_people_avatar_icon_159366.png' },
@@ -34,6 +35,7 @@ let state = {
          { id: 2, message: "It's my first post", likesCount: 11 },
          { id: 3, message: "It's my last post", likesCount: 100 },
       ],
+      newPostText: ''
    },
    sidebar: {
       topFriends: [
@@ -44,17 +46,37 @@ let state = {
    },
 }
 
+export let updateNewMessage = (text) => {
 
-export let addPost = (postMessage) => {
+   state.dialogsPage.NewMessage = text
+   rerenderEntireTree(state)
+}
+
+export let addMessage = () => {
+   let NewMessage = {
+      id: 6,
+      message: state.dialogsPage.NewMessage
+   }
+   state.dialogsPage.messages.push(NewMessage)
+   state.dialogsPage.NewMessage = ''
+   rerenderEntireTree(state)
+
+}
+
+export let addPost = () => {
 
    let newPost = {
       id: 4,
-      message: postMessage,
+      message: state.profilePage.newPostText,
       likesCount: 0
    }
    state.profilePage.posts.push(newPost)
+   state.profilePage.newPostText = ''
+   rerenderEntireTree(state)
 }
 
-
-
+export let addNewLetter = (newLetter) => {
+   state.profilePage.newPostText = newLetter
+   rerenderEntireTree(state)
+}
 export default state

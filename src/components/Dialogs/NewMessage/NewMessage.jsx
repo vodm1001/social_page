@@ -2,21 +2,30 @@ import React from 'react'
 import s from './../Dialogs.module.css'
 
 
+const AddNewMessage = (props) => {
 
-const AddNewMessage = () => {
-   let newMessage = (React.createRef())
-   let addMessage = () => {
-      let textNewMessage = newMessage.current.value
-      alert(textNewMessage)
+   let newMessageRef = (React.createRef())
+
+   let updateNewMessage = () => {
+      let text = newMessageRef.current.value
+      props.updateNewMessage(text)
 
    }
 
+
+   let addMessage = () => {
+      props.addMessage()
+   }
 
 
    return (
       <div>
          <div>
-            <textarea ref={newMessage}></textarea>
+            <textarea
+               onChange={updateNewMessage}
+               ref={newMessageRef}
+               value={props.NewMessage}
+            />
          </div>
          <div>
             <button onClick={addMessage}>send message</button>

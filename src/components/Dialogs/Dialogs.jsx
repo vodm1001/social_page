@@ -17,11 +17,15 @@ const Dialogs = (props) => {
    return (
       <div className={s.dialogs}>
          <div className={s.dialogsItems}>
+
             {dialogsElements}
          </div>
          <div className={s.messages}>
             {messagesElements}
-            <AddNewMessage />
+            <AddNewMessage
+               NewMessage={props.NewMessage}
+               updateNewMessage={props.updateNewMessage}
+               addMessage={props.addMessage} />
          </div>
 
       </div >
