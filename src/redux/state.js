@@ -1,3 +1,14 @@
+import dialogReducer from "./dialogReducer"
+import profileReducer from "./profileReducer"
+import sidebarReducer from "./sidebarReducer"
+
+
+// const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+// const ADD_MESSAGE = 'ADD-MESSAGE'
+// const UPDATE_NEW_POST = 'UPDATE-NEW-POST'
+// const ADD_POST = 'ADD-POST'
+
+
 let store = {
    _state: {
       dialogsPage: {
@@ -17,7 +28,7 @@ let store = {
             { id: 4, message: 'i am good ty, and you?' },
             { id: 5, message: 'perfect' },
          ],
-         NewMessage: '',
+         NewMessageText: '',
 
          dialogs: [
             { id: 1, name: 'dimych', avatarUrl: 'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg' },
@@ -44,44 +55,83 @@ let store = {
          ],
       },
    },
-   getState() {
-      return this._state
-   },
    _callSubscriber() {
       console.log('State changed');
    },
-   updateNewMessage(text) {
-      this._state.dialogsPage.NewMessage = text
-      this._callSubscriber(this._state)
-   },
-   addMessage() {
-      let NewMessage = {
-         id: 6,
-         message: this._state.dialogsPage.NewMessage
-      }
-      this._state.dialogsPage.messages.push(NewMessage)
-      this._state.dialogsPage.NewMessage = ''
-      this._callSubscriber(this._state)
-   },
-   addNewLetter(newLetter) {
-      this._state.profilePage.newPostText = newLetter
-      this._callSubscriber(this._state)
-   },
-   addPost() {
-      let newPost = {
-         id: 4,
-         message: this._state.profilePage.newPostText,
-         likesCount: 0
-      }
-      this._state.profilePage.posts.push(newPost)
-      this._state.profilePage.newPostText = ''
-      this._callSubscriber(this._state)
+
+
+   getState() {
+      return this._state
    },
    subscribe(observer) {
       this._callSubscriber = observer
    },
 
+   // updateNewMessage(text) {
+   //    this._state.dialogsPage.NewMessage = text
+   //    this._callSubscriber(this._state)
+   // },
+   // addMessage() {
+   //    let NewMessage = {
+   //       id: 6,
+   //       message: this._state.dialogsPage.NewMessage
+   //    }
+   //    this._state.dialogsPage.messages.push(NewMessage)
+   //    this._state.dialogsPage.NewMessage = ''
+   //    this._callSubscriber(this._state)
+   // },
+   // addNewLetter(newLetter) {
+   //    this._state.profilePage.newPostText = newLetter
+   //    this._callSubscriber(this._state)
+   // },
+   // addPost() {
+   //    let newPost = {
+   //       id: 4,
+   //       message: this._state.profilePage.newPostText,
+   //       likesCount: 0
+   //    }
+   //    this._state.profilePage.posts.push(newPost)
+   //    this._state.profilePage.newPostText = ''
+   //    this._callSubscriber(this._state)
+
+   dispatch(action) {
+
+      this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action)
+      this._state.profilePage = profileReducer(this._state.profilePage, action)
+      this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+
+      this._callSubscriber(this._state)
+
+      // if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+      //    this._state.dialogsPage.NewMessageText = action.newText
+      //    this._callSubscriber(this._state)
+      // } else if (action.type === 'ADD-MESSAGE') {
+      //    let NewMessage = {
+      //       id: 6,
+      //       message: this._state.dialogsPage.NewMessageText
+      //    }
+      //    this._state.dialogsPage.messages.push(NewMessage)
+      //    this._state.dialogsPage.NewMessageText = ''
+      //    this._callSubscriber(this._state)
+      // } else if (action.type === 'UPDATE-NEW-POST') { //NEW-LETTER
+      //    this._state.profilePage.newPostText = action.newText
+      //    this._callSubscriber(this._state)
+      // } else if (action.type === 'ADD-POST') {
+      //    let newPost = {
+      //       id: 4,
+      //       message: this._state.profilePage.newPostText,
+      //       likesCount: 0
+      //    }
+      //    this._state.profilePage.posts.push(newPost)
+      //    this._state.profilePage.newPostText = ''
+      //    this._callSubscriber(this._state)
+      // }
+   }
 }
+
+
+
+
 
 export default store
 window.store = store

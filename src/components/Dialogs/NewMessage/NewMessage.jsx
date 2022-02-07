@@ -1,20 +1,27 @@
 import React from 'react'
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../../redux/dialogReducer'
+
 import s from './../Dialogs.module.css'
 
 
 const AddNewMessage = (props) => {
 
-   let newMessageRef = (React.createRef())
+   // let newMessageRef = (React.createRef())
 
-   let updateNewMessage = () => {
-      let text = newMessageRef.current.value
-      props.updateNewMessage(text)
+   let updateNewMessageText = (event) => {
+      let text = event.target.value
+      // let text = newMessageRef.current.value
+      props.dispatch(updateNewMessageTextActionCreator(text))
+      // props.dispatch({ type: 'UPDATE-NEW-MESSAGE', newText: text })
+      //props.updateNewMessage(text)
 
    }
 
 
    let addMessage = () => {
-      props.addMessage()
+      props.dispatch(addMessageActionCreator())
+      //props.dispatch({ type: 'ADD-MESSAGE' })
+      //props.addMessage()
    }
 
 
@@ -22,9 +29,10 @@ const AddNewMessage = (props) => {
       <div>
          <div>
             <textarea
-               onChange={updateNewMessage}
-               ref={newMessageRef}
-               value={props.NewMessage}
+               placeholder='Enter your message'
+               onChange={updateNewMessageText}
+               // ref={newMessageRef}
+               value={props.NewMessageText}
             />
          </div>
          <div>
