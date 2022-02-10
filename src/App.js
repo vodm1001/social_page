@@ -3,11 +3,11 @@ import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 
 const App = (props) => {
@@ -17,19 +17,23 @@ const App = (props) => {
 
          <div className='app-wrapper'>
             <Header />
-            <Navbar topFriends={props.state.sidebar.topFriends} />
+            <Navbar />
             <div className='app-wrapper-content'>
                <Routes>
-                  <Route path='/dialogs/*' element={<Dialogs
-                     messages={props.state.dialogsPage.messages}
-                     NewMessageText={props.state.dialogsPage.NewMessageText}
-                     dialogs={props.state.dialogsPage.dialogs}
-                     dispatch={props.dispatch} />} />
+                  <Route path='/dialogs/*' element={<DialogsContainer
+                  // store={props.store}
+                  // messages={props.state.dialogsPage.messages}
+                  // NewMessageText={props.state.dialogsPage.NewMessageText}
+                  // dialogs={props.state.dialogsPage.dialogs}
+                  // dispatch={props.dispatch}
+                  />} />
                   {/* <Route path='/dialogs/*' > <Dialogs messages={props.state.dialogsPage.messages} dialogs={props.state.dialogsPage.dialogs} /> </Route> */}
                   <Route path='/profile' element={<Profile
-                     posts={props.state.profilePage.posts}
-                     newPostText={props.state.profilePage.newPostText}
-                     dispatch={props.dispatch} />} />
+                  // store={props.store}
+                  // posts={props.state.profilePage.posts}
+                  // newPostText={props.state.profilePage.newPostText}
+                  // dispatch={props.dispatch} 
+                  />} />
                   <Route path='/News' element={<News />} />
                   <Route path='/Music' element={<Music />} />
                   <Route path='/Settings' element={<Settings />} />

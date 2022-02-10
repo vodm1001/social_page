@@ -1,6 +1,6 @@
-import dialogReducer from "./dialogReducer"
-import profileReducer from "./profileReducer"
-import sidebarReducer from "./sidebarReducer"
+// import dialogReducer from "./dialogReducer"
+// import profileReducer from "./profileReducer"
+// import sidebarReducer from "./sidebarReducer"
 
 
 // const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
@@ -133,5 +133,5 @@ let store = {
 
 
 
-export default store
-window.store = store
+// export default store
+// window.store = store

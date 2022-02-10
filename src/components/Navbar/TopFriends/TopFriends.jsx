@@ -5,10 +5,10 @@ import s from './TopFriends.module.css';
 
 const TopFriends = (props) => {
 
-   let TopFriendsElements = props.topFriends.map(t => <Friend name={props.name} avatarUrl={props.avatarUrl} id={props.id} />)
+   let TopFriendsElements = props.topFriends.map(t => <Friend name={t.name} avatarUrl={t.avatarUrl} id={t.id} />)
 
    return (
-      <div className={s.TopFriends}>
+      <div className={s.topFriends}>
          {TopFriendsElements}
       </div>
    )
