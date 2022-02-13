@@ -1,4 +1,3 @@
-import React from 'react';
 import TopFriends from './TopFriends';
 import { connect } from 'react-redux'
 

@@ -23,7 +23,7 @@ const MyPosts = (props) => {
 
   }
 
-  let postElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount} />)
+  let postElements = props.posts.map(p => <Post message={p.message} key={p.id} likesCount={p.likesCount} />)
 
   return (
     <div className={s.postsBlock}>
