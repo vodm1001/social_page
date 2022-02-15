@@ -53,7 +53,7 @@ const dialogReducer = (state = initialState, action) => {
       default: return state
    }
 }
-debugger
+
 export const updateNewMessageTextActionCreator = (text) => {
    return { type: UPDATE_NEW_MESSAGE_TEXT, newText: text }
 }

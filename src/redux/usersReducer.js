@@ -5,12 +5,7 @@ const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
 
 let initialState = {
-   users: [
-      { id: 1, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9r3ogaSmpwNYSaEKRifVaHjwmYsKSW7fC6Q&usqp=CAU', followed: false, fullName: 'Dmytro', status: 'i am a boss', location: { city: 'Minsk', country: 'Belarus' } },
-      { id: 2, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9r3ogaSmpwNYSaEKRifVaHjwmYsKSW7fC6Q&usqp=CAU', followed: true, fullName: 'Sasha', status: 'i am a cool boy', location: { city: 'lviv', country: 'Ukraine' } },
-      { id: 3, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9r3ogaSmpwNYSaEKRifVaHjwmYsKSW7fC6Q&usqp=CAU', followed: false, fullName: 'Olga', status: 'wanna sleep', location: { city: 'Washington', country: 'USA' } },
-
-   ],
+   users: [],
 }
 
 
@@ -73,7 +68,7 @@ const usersReducer = (state = initialState, action) => {
 //    }
 // }
 
-debugger
+
 export const followAC = (userId) => ({ type: FOLLOW, userId })
 export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId })
 export const setUsersAC = (users) => ({ type: SET_USERS, users })
