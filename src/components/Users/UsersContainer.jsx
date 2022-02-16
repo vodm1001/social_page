@@ -8,7 +8,7 @@ let mapStateToProps = (state) => {
       users: state.usersPage.users
    }
 }
-debugger
+
 let mapDispachToProps = (dispatch) => {
    return {
       follow: (userId) => {

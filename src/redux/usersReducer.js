@@ -16,7 +16,7 @@ let initialState = {
 
 const usersReducer = (state = initialState, action) => {
    switch (action.type) {
-      case FOLLOW: {
+      case 'FOLLOW': {
          return {
             ...state,
             users: state.users.map(u => {
@@ -73,7 +73,7 @@ const usersReducer = (state = initialState, action) => {
 //    }
 // }
 
-debugger
+
 export const followAC = (userId) => ({ type: FOLLOW, userId })
 export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId })
 export const setUsersAC = (users) => ({ type: SET_USERS, users })
