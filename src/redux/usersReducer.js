@@ -6,17 +6,17 @@ const SET_USERS = 'SET-USERS'
 
 let initialState = {
    users: [
-      { id: 1, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9r3ogaSmpwNYSaEKRifVaHjwmYsKSW7fC6Q&usqp=CAU', followed: false, fullName: 'Dmytro', status: 'i am a boss', location: { city: 'Minsk', country: 'Belarus' } },
+      { id: 1, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9r3ogaSmpwNYSaEKRifVaHjwmYsKSW7fC6Q&usqp=CAU', followed: false, fullName: 'Dmytro', status: 'i am a boss', location: { city: 'Drogobych', country: 'Ukraine' } },
       { id: 2, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9r3ogaSmpwNYSaEKRifVaHjwmYsKSW7fC6Q&usqp=CAU', followed: true, fullName: 'Sasha', status: 'i am a cool boy', location: { city: 'lviv', country: 'Ukraine' } },
       { id: 3, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9r3ogaSmpwNYSaEKRifVaHjwmYsKSW7fC6Q&usqp=CAU', followed: false, fullName: 'Olga', status: 'wanna sleep', location: { city: 'Washington', country: 'USA' } },
-
+//не працює силка для axios запиту, тому поки хардкод (51 відос)
    ],
 }
 
 
 const usersReducer = (state = initialState, action) => {
    switch (action.type) {
-      case 'FOLLOW': {
+      case FOLLOW: {
          return {
             ...state,
             users: state.users.map(u => {
